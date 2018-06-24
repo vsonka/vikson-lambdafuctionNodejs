@@ -38,8 +38,8 @@ Parameters:
     ConstraintDescription: must be between 5 and 10000
 
 Resources:
-  MyBucket:
-    Type: AWS::S3::Bucket
+  Myfunction:
+    Type: AWS::Lambda::Function
     Properties:
       'Fn::Transform':
           - Name: 'AWS::Include'
