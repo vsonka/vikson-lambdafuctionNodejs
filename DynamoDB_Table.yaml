@@ -39,7 +39,7 @@ Parameters:
 
 Resources:
   Myfunction:
-    Type: AWS::Lambda::Function
+    Type: AWS::s3::Bucket
     Properties:
       'Fn::Transform':
           - Name: 'AWS::Include'
