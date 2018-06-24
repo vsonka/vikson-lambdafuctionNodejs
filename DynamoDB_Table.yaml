@@ -7,7 +7,7 @@ Description: 'AWS CloudFormation Sample Template DynamoDB_Table: This template d
   this template.'
 Parameters:
   HashKeyElementName:
-    Description: HashType PrimaryKey Name
+    Description: HashType PrimaryKey Namea
     Default: id
     Type: String
     AllowedPattern: '[a-zA-Z0-9]*'
@@ -36,7 +36,15 @@ Parameters:
     MinValue: '5'
     MaxValue: '10000'
     ConstraintDescription: must be between 5 and 10000
+
 Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      'Fn::Transform':
+          - Name: 'AWS::Include'
+            Parameters:
+              Location: s3://awscodepipeline-vikson/samTemplate.yaml
   myDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -61,10 +69,7 @@ Resources:
 #      putitem:
 #        - Firstname: vikas
 
-Transform:
-  Name: 'AWS::Include'
-  Parameters:
-    Location: 's3://awscodepipeline-vikson/samTemplate.yaml'
+
 
 Outputs:
   TableName:
